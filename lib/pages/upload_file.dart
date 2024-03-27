@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:http/http.dart' as http;
@@ -10,9 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class UploadFilePage extends StatefulWidget {
-
   static const routename = '/publicatondetailscreen';
-  final String userId;
+  final userId;
 
   UploadFilePage({Key? key, this.userId}) : super(key: key);
 
@@ -50,17 +48,14 @@ class _UploadFilePageState extends State<UploadFilePage> {
         filename: _pickedFile!.name,
       ));
 
-   
     var response = await request.send();
 
     if (response.statusCode == 200) {
- 
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
 
       var responses = json.decode(responseString);
 
-    
       List<dynamic> flashcardsJson = responses['flashcards'];
       print(flashcardsJson);
 
@@ -75,35 +70,39 @@ class _UploadFilePageState extends State<UploadFilePage> {
       print(carteItems);
 
       Flashcard newFlashcard = Flashcard(
-        id: DateTime.now().toIso8601String(), 
+        id: DateTime.now().toIso8601String(),
         title: _titleController.text.isEmpty
             ? 'Imported Flashcards'
-            : _titleController
-                .text, 
-        color: 'blue', 
+            : _titleController.text,
+        color: 'blue',
         isPublic: false,
         flashcards: carteItems,
-        sharedWithUserIds: [], 
+        sharedWithUserIds: [],
       );
 
       print(newFlashcard);
 
-
       setState(() {
         _isLoading = false;
       });
 
+      Provider.of<FlaschCardsList>(context, listen: false)
+          .addFlashcard(newFlashcard, widget.userId);
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(backgroundColor: Colors.green, content: Text('Flashcards uploaded and added successfully!')),
+        SnackBar(
+            backgroundColor: Colors.green,
+            content: Text('Flashcards uploaded and added successfully!')),
       );
     } else {
-
       setState(() {
         _isLoading = false;
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(backgroundColor: Colors.red, content: Text('Failed to upload flashcards')),
+        SnackBar(
+            backgroundColor: Colors.red,
+            content: Text('Failed to upload flashcards')),
       );
     }
   }
@@ -111,36 +110,62 @@ class _UploadFilePageState extends State<UploadFilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[600],
       appBar: AppBar(
-        title: Text('Upload File'),
+        backgroundColor: Colors.blue[600],
+        title: Text('Upload File', style: TextStyle(color: Colors.white)),
       ),
       body: Center(
         child: _isLoading
             ? CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextField(
-                    controller: _titleController,
-                    decoration: InputDecoration(labelText: 'Flashcard Title'),
-                  ),
-                  ElevatedButton(
-                    onPressed: _pickFile,
-                    child: Text('Pick File'),
-                  ),
-                  SizedBox(height: 20),
-                  _pickedFile != null
-                      ? Text('File: ${_pickedFile!.name}')
-                      : Container(),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _uploadFile,
-                    child: Text('Upload and Process File'),
-                  ),
-                ],
-              ),
+            : Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TextField(
+                      controller: _titleController,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey.shade400)),
+                        labelText: 'Flashcard title',
+                        fillColor: Colors.grey.shade200,
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      
+                      onPressed: _pickFile,
+                      child: Text('Pick File'),
+                      style: ElevatedButton.styleFrom(
+                        
+                        padding: EdgeInsets.all(20),
+                        elevation: 6,
+                        primary: Colors.white,
+                        onPrimary: Colors.blue[900],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    _pickedFile != null
+                        ? Text('File: ${_pickedFile!.name}',
+                            style: TextStyle(color: Colors.white))
+                        : Container(),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: _uploadFile,
+                      child: Text('Upload and Process File'),
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.all(20),
+                        elevation: 6,
+                        primary: Colors.white,
+                        onPrimary: Colors.blue[900],
+                      ),
+                    ),
+                  ],
+                ),
+            ),
       ),
     );
   }
 }
-

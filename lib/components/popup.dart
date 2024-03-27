@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/addflashcard.dart';
+import '../pages/upload_file.dart';
 
 class Popup extends StatelessWidget {
   final userId;
@@ -24,8 +25,12 @@ class Popup extends StatelessWidget {
             TextButton(
               child: Text('Avec IA'),
               onPressed: () {
-                Navigator.of(context).pop();
                 // Navigation vers la page de création avec IA
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => UploadFilePage(userId: userId),
+                  ),
+                );
               },
             ),
           ],

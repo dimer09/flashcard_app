@@ -219,14 +219,16 @@ class _HomePageState extends State<HomePage> {
                   ? Expanded(
                       child: Container(
                           color: Colors.white,
-                          child: Center(
-                              child: Column(
+                          child: Column(
                             children: [
-                              Text('O flascards Founds',
-                                  style: TextStyle(color: Colors.black)),
-                              Icon(Icons.not_accessible, size: 30),
+                          Center(
+                            child: Text('O flascards Founds',
+                            
+                                style: TextStyle(color: Colors.grey, fontSize: 20), ),
+                          ),
+                          Icon(Icons.no_sim_outlined, size: 60, color :Colors.grey),
                             ],
-                          ))),
+                          )),
                     )
                   : Expanded(
                       child: ListView.builder(

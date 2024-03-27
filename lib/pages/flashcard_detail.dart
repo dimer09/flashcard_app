@@ -173,59 +173,61 @@ class _FlashcarddetailscreenState extends State<Flashcarddetailscreen> {
             ]),
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: flashitem.flashcards.length,
-                itemBuilder: (ctx, i) => Carte_Item(
-                      id: flashitem.flashcards[i].flashcardid,
-                      question: flashitem.flashcards[i].question,
-                      answer: flashitem.flashcards[i].reponse,
-                      onDelete: () {
-                        Provider.of<FlaschCardsList>(context, listen: false)
-                            .removeCarteItem(flashcardid[1], flashcardide,
-                                flashitem.flashcards[i].flashcardid)
-                            .then((success) {
-                          if (success) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content: Text('Carte supprimee avec succès')),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content: Text(
-                                      'Erreur lors de la suppression de la Carte')),
-                            );
-                          }
-                        });
-                        ;
-                      },
-                      onEdit: () {
-                        _showEditDialog(
-                            context, flashitem.flashcards[i], flashcardide,
-                            (String flashcardId, String carteId,
-                                String newQuestion, String newAnswer) {
+            child: Center(
+              child: ListView.builder(
+                  itemCount: flashitem.flashcards.length,
+                  itemBuilder: (ctx, i) => Carte_Item(
+                        id: flashitem.flashcards[i].flashcardid,
+                        question: flashitem.flashcards[i].question,
+                        answer: flashitem.flashcards[i].reponse,
+                        onDelete: () {
                           Provider.of<FlaschCardsList>(context, listen: false)
-                              .updateCarteItem(flashcardid[1], flashcardId,
-                                  carteId, newQuestion, newAnswer)
+                              .removeCarteItem(flashcardid[1], flashcardide,
+                                  flashitem.flashcards[i].flashcardid)
                               .then((success) {
                             if (success) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                    content:
-                                        Text('Carte mis à jour avec succès')),
+                                    content: Text('Carte supprimee avec succès')),
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text(
-                                        'Erreur lors de la mise à jour de la carte')),
+                                        'Erreur lors de la suppression de la Carte')),
                               );
                             }
                           });
                           ;
-                        });
-                      },
-                    )),
+                        },
+                        onEdit: () {
+                          _showEditDialog(
+                              context, flashitem.flashcards[i], flashcardide,
+                              (String flashcardId, String carteId,
+                                  String newQuestion, String newAnswer) {
+                            Provider.of<FlaschCardsList>(context, listen: false)
+                                .updateCarteItem(flashcardid[1], flashcardId,
+                                    carteId, newQuestion, newAnswer)
+                                .then((success) {
+                              if (success) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content:
+                                          Text('Carte mis à jour avec succès')),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text(
+                                          'Erreur lors de la mise à jour de la carte')),
+                                );
+                              }
+                            });
+                           
+                          });
+                        },
+                      )),
+            ),
           ),
         ]),
       ),

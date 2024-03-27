@@ -19,19 +19,10 @@ class Carte_Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: Key(id),
-      background: Container(
-        color: Colors.red,
-        child: Icon(Icons.delete, color: Colors.white),
-        alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(right: 20),
-      ),
-      direction: DismissDirection.endToStart,
-      onDismissed: (direction) {
-        onDelete();
-      },
+    return Container(
+      padding: EdgeInsets.all(10),
       child: FlipCard(
+    
         front: buildCardSide(context, question, true),
         back: buildCardSide(context, answer, false),
       ),
@@ -40,14 +31,14 @@ class Carte_Item extends StatelessWidget {
 
   Widget buildCardSide(BuildContext context, String text, bool isQuestion) {
     return Card(
+
       margin: EdgeInsets.symmetric(vertical: 10),
       elevation: 6,
       color: Colors.blue[600],
-      child: InkWell(
-        onTap: () => onEdit(),
-        splashColor: Colors.white.withAlpha(30),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+        child: InkWell(
+          onTap: () => onEdit(),
           child: Text(
             text,
             style: TextStyle(
