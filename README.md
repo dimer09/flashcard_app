@@ -39,5 +39,5 @@ Pour toute assistance ou rapport de bug, veuillez contacter le support technique
 
 ---
 
-Flashcard App est en constante évolution et est encore en **cours de construction** , et nous nous efforçons d'améliorer l'expérience d'apprentissage de nos utilisateurs. Vos retours et contributions sont les bienvenus!
+Momento est en constante évolution et est encore en **cours de construction** , et nous nous efforçons d'améliorer l'expérience d'apprentissage de nos utilisateurs. Vos retours et contributions sont les bienvenus!
 
