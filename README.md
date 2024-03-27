@@ -34,7 +34,7 @@ Après vous être connecté à Momento, vous pouvez :
 
 ## Support
 
-Pour toute assistance ou rapport de bug, veuillez contacter le support technique à merdingoie@gmail.com.
+Pour toute assistance ou rapport de bug, veuillez contacter merdingoie@gmail.com.
 
 
 ---
