@@ -148,7 +148,7 @@ class _ContactDetailsPageState extends State<ContactDetailsPage> {
             TextButton(
               child: Text('Sauvegarder'),
               onPressed: () {
-                // Ici, insérez la logique pour mettre à jour le nom d'utilisateur dans votre base de données ou provider
+                // mise à jour nom d'utilisateur dans la db
                 Provider.of<ContactsProvider>(context, listen: false)
                     .updateUsername(
                         widget.currentUserId, usernameController.text);
@@ -183,7 +183,7 @@ class _ContactDetailsPageState extends State<ContactDetailsPage> {
             TextButton(
               child: Text('Sauvegarder'),
               onPressed: () {
-                // Ici, insérez la logique pour mettre à jour l'email dans votre base de données ou provider
+                // mise à jour email dans la db
                 Provider.of<ContactsProvider>(context, listen: false)
                     .updateEmail(widget.currentUserId, emailController.text);
                 Navigator.of(context).pop();
