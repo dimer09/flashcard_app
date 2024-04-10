@@ -13,13 +13,24 @@ Momento est une application mobile conçue pour faciliter l'apprentissage et le 
 - **Recherche** : Filtrage des flashcards par visibilité privée ou publique
 - **Sauvegarde et synchronisation** : Intégration avec des services cloud pour une sauvegarde et une synchronisation en temps réel.
 
-## Installation
+## Étapes d'installation
 
-Pour installer Momento, suivez ces étapes :
+1. **Obtenir le code** :
+   - Téléchargez le fichier ZIP ou clonez le dépôt Git dans votre environnement de développement.
 
-1. Téléchargez l'application depuis le Play Store ou l'App Store (liens à venir).
-2. Ouvrez l'application sur votre appareil mobile.
-3. Créez un compte utilisateur ou connectez-vous avec vos identifiants.
+2. **Installer les dépendances Flutter** :
+   - Ouvrez un terminal dans le répertoire du projet Flutter.
+   - Exécutez `flutter pub get` pour installer les dépendances.
+
+3. **Configurer l'API Flask** :
+
+Veuillez suivre les instructions détaillées pour installer les dépendances Flask dans le [dépôt GitHub de l'API](<https://github.com/dimer09/Momento_API.git>).
+    - Téléchargez/clônez le dépôt Git de l'API Flask.
+   - Installez les dépendances nécessaires 
+   - Lancez l'API Flask en exécutant `flask run`.
+
+4. **Lancer l'application Flutter** :
+   - Une fois l'API Flask en fonctionnement, lancez l'application Flutter avec `flutter run`.
 
 ## Utilisation
 
@@ -34,7 +45,7 @@ Après vous être connecté à Momento, vous pouvez :
 
 ## Support
 
-Pour toute assistance ou rapport de bug, veuillez contacter le support technique à merdingoie@gmail.com.
+Pour toute assistance ou rapport de bug, veuillez contacter merdingoie@gmail.com.
 
 
 ---
